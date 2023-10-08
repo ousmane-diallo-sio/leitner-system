@@ -1,10 +1,11 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import envUtils from '../utils/EnvUtils';
 
 class UsersService {
 
   axiosClient = axios.create({
-    baseURL: process.env.API_PUBLIC_URL,
+    baseURL: envUtils.API_BASE_URL,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -16,9 +17,8 @@ class UsersService {
       return null
     }
 
-    const route = `${process.env.API_PUBLIC_URL}/user/login`
     try {
-      const res = await this.axiosClient.post(route, { username, password })
+      const res = await this.axiosClient.post("/user/login", { username, password })
       if (res.status === 200) {
         toast.success(`Bienvenue ${username}`)
         return res.data
