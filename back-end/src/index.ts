@@ -6,6 +6,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use('/user', userController)
+app.use('/sheet', userController)
 
 app.get('/', (req, res) => {
 	res.contentType("application/json")
