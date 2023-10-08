@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import styles from "./components/styles.module.scss"
 import usersService from "../../Users/UsersService";
@@ -20,37 +21,37 @@ const Login = () => {
     }
   }
 
-  const signup = () => {
-    console.log('Create Account button clicked');
-  }
-
   return (
     <main className={styles['login']}>
       <section className="flex flex-col items-center">
-        <h1 className="my-20">Login</h1>
+        <h1 className="my-20">Connexion</h1>
 
         <div className={styles['form']}>
           <div className="flex flex-col w-72 mb-2">
-            <label htmlFor="username">Username</label>
-            <input 
-              type="text" 
-              id="username" 
+            <label htmlFor="username">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
               onChange={(e) => setUsername(e.target.value)} />
           </div>
           <div className="flex flex-col w-72">
-            <label htmlFor="password">Password</label>
-            <input 
-              type="password" 
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
               id="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <button 
+          <button
             className={styles['login-btn']}
             onClick={login}
           >
-            Login
+            Me connecter
           </button>
-          <a href="/signup">Je n'ai pas encore de compte</a>
+          <a onClick={() => navigate('/signup')}>
+            Je n'ai pas encore de compte
+          </a>
         </div>
       </section>
     </main>

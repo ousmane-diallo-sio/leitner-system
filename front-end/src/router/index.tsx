@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
 import PageWrapper from './components/PageWrapper'
+import Signup from '../pages/signup'
 
 const Router = () => {
   const location = useLocation()
@@ -15,7 +16,7 @@ const Router = () => {
     <PageWrapper>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route path="/signup" element={<Register />} /> */}
+        <Route path="/signup" element={<Signup />} />
         {/* <Route
           path="/dashboard/*"
           element={
