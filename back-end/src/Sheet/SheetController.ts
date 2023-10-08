@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const sheetServices = require('./SheetService');
+import { Request, Response } from 'express';
 
-router.post('/sheets', (req: any, res: any) => {
+
+router.post('/sheets', (req: Request, res: Response) => {
     const newSheet = req.body;
     sheetServices.createSheet(newSheet);
     res.status(201).json({ message: 'Feuille créée avec succès' });
 });
 
-router.put('/sheets/:sheetId/updateCategory', (req: any, res: any) => {
-    const sheetId = req.params.sheetId;
-    const userAnswer = req.body.userAnswer;
+router.put('/sheets/:sheetId/updateCategory', (req: Request, res: Response) => {
+    const sheetId = Number(req.params.sheetId); 
+    const userAnswer = req.body.userAnswer as string; 
 
     try {
         const isCorrect = sheetServices.compareAnswers(sheetId, userAnswer);
@@ -26,5 +28,3 @@ router.put('/sheets/:sheetId/updateCategory', (req: any, res: any) => {
         res.status(404).json({ message: 'Feuille non trouvée' });
     }
 });
-
-module.exports = router;

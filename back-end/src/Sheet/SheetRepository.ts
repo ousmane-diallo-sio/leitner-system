@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const dataFilePath = '../database/sheets.json';
+const dataFilePath = require('../../database/sheets.json');
 
 
 function readSheets(): Sheet[] {
@@ -8,7 +8,7 @@ function readSheets(): Sheet[] {
   return JSON.parse(data);
 }
 
-function writeSheets(sheets: Sheet[]): void { // Ajoutez le type Sheet[] ici
+function writeSheets(sheets: Sheet[]): void { 
   const data = JSON.stringify(sheets, null, 2);
   fs.writeFileSync(dataFilePath, data);
 }
