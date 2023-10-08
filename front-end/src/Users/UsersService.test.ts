@@ -2,9 +2,14 @@ import envUtils from "../utils/EnvUtils"
 import usersService from "./UsersService"
 
 describe("Test UsersService", () => {
+  
   const validResponse: ServerResponse<User> = {
     data: { username: "John", password: "azerty" } 
   }
+
+  beforeAll(() => {
+    envUtils.API_BASE_URL = "http://localhost:3005"
+  })
 
   test.each([
     {

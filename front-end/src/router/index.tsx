@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { observer } from 'mobx-react'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
 import PageWrapper from './components/PageWrapper'

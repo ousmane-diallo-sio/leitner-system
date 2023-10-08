@@ -1,4 +1,4 @@
-import { MotionStyle, motion } from "framer-motion"
+import { motion } from "framer-motion"
 import { observer } from "mobx-react"
 
 type PageWrapperProps = {
