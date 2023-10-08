@@ -8,10 +8,9 @@ userController.post('/login', (req, res) => {
   const { username, password } = req.body;
     const user = UserRepository.getOne(username, password)
     if (user) {
-      res.json(user);
-    } else {
-      res.status(401).json(null);
+      return res.json(user);
     }
+    res.status(401).json(null);
 });
 
 export default userController;
