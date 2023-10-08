@@ -1,6 +1,11 @@
+import envUtils from "../utils/EnvUtils"
 import usersService from "./UsersService"
 
 describe("Test UsersService", () => {
+  const validResponse: ServerResponse<User> = {
+    data: { username: "John", password: "azerty" } 
+  }
+
   test.each([
     {
       username: "",
@@ -8,14 +13,16 @@ describe("Test UsersService", () => {
       expected: null,
     },
     {
-      username: "John",
-      password: "azerty",
-      expected: Object({ username: "John", password: "azerty" }),
+      username: validResponse.data.username,
+      password: validResponse.data.password,
+      expected: validResponse.data,
     },
   ])(
       `Should return '$expected' when username is '$username' and password is '$password'`,
       async ({ expected, username, password }) => {
-          expect( await usersService.login(username, password)).toStrictEqual(expected)
+        const stringifiedExpected = JSON.stringify(expected)
+        const stringifiedRes = JSON.stringify(await usersService.login(username, password))
+        expect(stringifiedRes).toStrictEqual(stringifiedExpected)
       }
   )
 })
