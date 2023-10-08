@@ -40,6 +40,10 @@ class UsersService {
       return null
     }
   }
+
+  async signup(username: string, password: string) {
+    
+  }
 }
 
 const usersService = new UsersService()
