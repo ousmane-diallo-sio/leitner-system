@@ -9,6 +9,7 @@ class UsersService {
     headers: {
       'Content-Type': 'application/json',
     },
+    validateStatus: () => true,
   })
 
   async login(username: string, password: string): Promise<User | null> {
@@ -19,10 +20,17 @@ class UsersService {
 
     try {
       const res = await this.axiosClient.post("/user/login", { username, password })
+      const resData = res.data as ServerResponse<User | null>
+
       if (res.status === 200) {
         toast.success(`Bienvenue ${username}`)
-        return res.data
+        return resData.data
       }
+
+      if (resData.error) {
+        toast.error(resData.error)
+      }
+
       return null
     } catch (error) {
       toast.error("Erreur lors de la connexion")

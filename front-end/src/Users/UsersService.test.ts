@@ -8,9 +8,9 @@ describe("Test UsersService", () => {
       expected: null,
     },
     {
-      username: "user",
+      username: "John",
       password: "azerty",
-      expected: Object({ username: "user", password: "azerty" }),
+      expected: Object({ username: "John", password: "azerty" }),
     },
   ])(
       `Should return '$expected' when username is '$username' and password is '$password'`,
