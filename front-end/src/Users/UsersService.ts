@@ -24,7 +24,6 @@ class UsersService {
       const resData = res.data as ServerResponse<UserType | null>
 
       if (res.status === 200) {
-        toast.success(`Bienvenue ${username}`)
         userMobx.user = resData.data
         return resData.data
       }
@@ -41,8 +40,31 @@ class UsersService {
     }
   }
 
-  async signup(username: string, password: string) {
-    
+  async signup(username: string, password: string): Promise<UserType | null> {
+    if (!username || !password) {
+      toast.error("Nom d'utilisateur et mot de passe requis")
+      return null
+    }
+
+    try {
+      const res = await this.axiosClient.post("/user/signup", { username, password })
+      const resData = res.data as ServerResponse<UserType | null>
+
+      if (res.status === 201) {
+        userMobx.user = resData.data
+        return resData.data
+      }
+
+      if (resData.error) {
+        toast.error(resData.error)
+      }
+
+      return null
+    } catch (error) {
+      toast.error("Erreur lors de l'inscription")
+      console.log("error: ", error)
+      return null
+    }
   }
 }
 

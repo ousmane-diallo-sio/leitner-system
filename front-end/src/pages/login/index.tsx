@@ -3,6 +3,7 @@ import styles from "./components/styles.module.scss"
 import usersService from "../../Users/UsersService";
 import userMobx from "../../Users/UsersMobx";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Login = () => {
 
@@ -14,6 +15,7 @@ const Login = () => {
   const login = async () => {
     await usersService.login(username, password)
     if (userMobx.user) {
+      toast.success(`Bienvenue ${username}`)
       navigate('/dashboard')
     }
   }
