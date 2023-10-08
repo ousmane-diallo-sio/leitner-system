@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import styles from "./components/styles.module.scss"
+import usersService from "../../Users/UsersService";
 
 const Login = () => {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const login = () => {
-    console.log('Username:', username);
-    console.log('Password:', password);
-  };
+  const login = async () => {
+    await usersService.login(username, password)
+  }
 
   const signup = () => {
     console.log('Create Account button clicked');
-  };
+  }
 
   return (
     <main className={styles['login']}>
@@ -23,11 +23,17 @@ const Login = () => {
         <div className={styles['form']}>
           <div className="flex flex-col w-72 mb-2">
             <label htmlFor="username">Username</label>
-            <input type="text" id="username" />
+            <input 
+              type="text" 
+              id="username" 
+              onChange={(e) => setUsername(e.target.value)} />
           </div>
           <div className="flex flex-col w-72">
             <label htmlFor="password">Password</label>
-            <input type="password" id="password" />
+            <input 
+              type="password" 
+              id="password"
+              onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button 
             className={styles['login-btn']}

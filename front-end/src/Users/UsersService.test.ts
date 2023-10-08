@@ -14,8 +14,8 @@ describe("Test UsersService", () => {
     },
   ])(
       `Should return '$expected' when username is '$username' and password is '$password'`,
-      ({ expected, username, password }) => {
-          expect(usersService.login(username, password)).toStrictEqual(expected)
+      async ({ expected, username, password }) => {
+          expect( await usersService.login(username, password)).toStrictEqual(expected)
       }
   )
 })
