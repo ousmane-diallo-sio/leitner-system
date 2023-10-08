@@ -27,16 +27,17 @@ const Signup = () => {
         <div>
           <div className="flex flex-col w-72 mb-2">
             <label htmlFor="username">Nom d'utilisateur</label>
-            <input 
-              type="text" 
-              id="username" 
+            <input
+              type="text"
+              id="username"
+              placeholder="John"
               value={username}
               onChange={(e) => setUsername(e.target.value)} />
           </div>
           <div className="flex flex-col w-72">
             <label htmlFor="password">Mot de passe</label>
-            <input 
-              type="password" 
+            <input
+              type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)} />
@@ -49,6 +50,10 @@ const Signup = () => {
             Je m'inscris
           </button>
         </div>
+        <br />
+        <a onClick={() => navigate('/login')}>
+          J'ai déjà un compte
+        </a>
       </section>
     </main>
   )

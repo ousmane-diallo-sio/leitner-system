@@ -8,14 +8,16 @@ import Signup from '../pages/signup'
 const Router = () => {
   const location = useLocation()
 
-  useEffect(() => {
-    // TODO: check if user is logged in and redirect to login if not
-  }, [location.pathname])
+  const publicRoutes = [
+    '/login',
+    '/signup'
+  ]
   
   return (
     <PageWrapper>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         {/* <Route
           path="/dashboard/*"
