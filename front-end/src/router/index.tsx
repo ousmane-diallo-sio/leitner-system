@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { observer } from 'mobx-react'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
+import PageWrapper from './components/PageWrapper'
 
 const Router = () => {
   const location = useLocation()
@@ -13,7 +14,7 @@ const Router = () => {
   }, [location.pathname])
   
   return (
-    <div>
+    <PageWrapper>
       <Routes>
         <Route path="/" element={<Login />} />
         {/* <Route path="/signup" element={<Register />} /> */}
@@ -28,7 +29,7 @@ const Router = () => {
         /> */}
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </div>
+    </PageWrapper>
   )
 }
 
