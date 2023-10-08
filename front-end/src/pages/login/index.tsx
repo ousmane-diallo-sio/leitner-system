@@ -1,14 +1,21 @@
 import React, { useState } from "react";
 import styles from "./components/styles.module.scss"
 import usersService from "../../Users/UsersService";
+import userMobx from "../../Users/UsersMobx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const navigate = useNavigate()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const login = async () => {
     await usersService.login(username, password)
+    if (userMobx.user) {
+      navigate('/dashboard')
+    }
   }
 
   const signup = () => {

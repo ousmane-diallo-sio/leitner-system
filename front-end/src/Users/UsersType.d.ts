@@ -1,4 +1,4 @@
-type User = {
+type UserType = {
   username: string
   password: string
 }

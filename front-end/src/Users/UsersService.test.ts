@@ -3,7 +3,7 @@ import usersService from "./UsersService"
 
 describe("Test UsersService", () => {
   
-  const validResponse: ServerResponse<User> = {
+  const validResponse: ServerResponse<UserType> = {
     data: { username: "John", password: "azerty" } 
   }
 

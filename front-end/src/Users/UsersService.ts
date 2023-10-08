@@ -1,6 +1,7 @@
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import envUtils from '../utils/EnvUtils';
+import userMobx from './UsersMobx';
 
 class UsersService {
 
@@ -12,7 +13,7 @@ class UsersService {
     validateStatus: () => true,
   })
 
-  async login(username: string, password: string): Promise<User | null> {
+  async login(username: string, password: string): Promise<UserType | null> {
     if (!username || !password) {
       toast.error("Nom d'utilisateur et mot de passe requis")
       return null
@@ -20,10 +21,11 @@ class UsersService {
 
     try {
       const res = await this.axiosClient.post("/user/login", { username, password })
-      const resData = res.data as ServerResponse<User | null>
+      const resData = res.data as ServerResponse<UserType | null>
 
       if (res.status === 200) {
         toast.success(`Bienvenue ${username}`)
+        userMobx.user = resData.data
         return resData.data
       }
 
