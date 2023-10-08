@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "ValidUsername",
+      "password": "ValidPassword"
+    },
+    {
+      "username": "John",
+      "password": "azerty"
+    },
+    {
+      "username": "Jane",
+      "password": "qwerty"
+    }
+  ]
+}
