@@ -2,7 +2,10 @@ import axios from 'axios';
 
 class UsersService {
   
-  login() {
+  login(username: string, password: string): User | null {
+    if (username && password) {
+      return { username, password }
+    }
     return null
   }
 
