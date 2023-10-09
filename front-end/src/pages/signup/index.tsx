@@ -1,20 +1,18 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import styles from "./components/styles.module.scss"
 import usersService from "../../Users/UsersService";
 import userMobx from "../../Users/UsersMobx";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const Login = () => {
+const Signup = () => {
 
   const navigate = useNavigate()
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const login = async () => {
-    await usersService.login(username, password)
+  const signup = async () => {
+    await usersService.signup(username, password)
     if (userMobx.user) {
       toast.success(`Bienvenue ${username}`)
       navigate('/dashboard')
@@ -22,16 +20,17 @@ const Login = () => {
   }
 
   return (
-    <main className={styles['login']}>
+    <main>
       <section className="flex flex-col items-center">
-        <h1 className="my-20">Connexion</h1>
+        <h1 className="my-20">Créer un compte</h1>
 
-        <div className={styles['form']}>
+        <div>
           <div className="flex flex-col w-72 mb-2">
             <label htmlFor="username">Nom d'utilisateur</label>
             <input
               type="text"
               id="username"
+              placeholder="John"
               value={username}
               onChange={(e) => setUsername(e.target.value)} />
           </div>
@@ -43,19 +42,21 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)} />
           </div>
+          <br />
           <button
-            className={styles['login-btn']}
-            onClick={login}
+            className="w-full bg-blue-500 text-white"
+            onClick={signup}
           >
-            Me connecter
+            Je m'inscris
           </button>
-          <a onClick={() => navigate('/signup')}>
-            Je n'ai pas encore de compte
-          </a>
         </div>
+        <br />
+        <a onClick={() => navigate('/login')}>
+          J'ai déjà un compte
+        </a>
       </section>
     </main>
   )
 }
 
-export default Login
+export default Signup
