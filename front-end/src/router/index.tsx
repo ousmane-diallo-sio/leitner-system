@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
 import PageWrapper from './components/PageWrapper'
 import Signup from '../pages/signup'
+import userMobx from '../Users/UsersMobx'
 
 const Router = () => {
   const location = useLocation()
-
-  const publicRoutes = [
-    '/login',
-    '/signup'
-  ]
+  const navigate = useNavigate()
   
   return (
     <PageWrapper>
@@ -33,5 +30,11 @@ const Router = () => {
     </PageWrapper>
   )
 }
+
+export const publicRoutes = [
+  '/',
+  '/login',
+  '/signup'
+]
 
 export default Router

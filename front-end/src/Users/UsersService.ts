@@ -40,6 +40,10 @@ class UsersService {
     }
   }
 
+  logout() {
+    userMobx.user = null
+  }
+
   async signup(username: string, password: string): Promise<UserType | null> {
     if (!username || !password) {
       toast.error("Nom d'utilisateur et mot de passe requis")
@@ -47,7 +51,7 @@ class UsersService {
     }
 
     try {
-      const res = await this.axiosClient.post("/user/signup", { username, password })
+      const res = await this.axiosClient.post("/user/register", { username, password })
       const resData = res.data as ServerResponse<UserType | null>
 
       if (res.status === 201) {

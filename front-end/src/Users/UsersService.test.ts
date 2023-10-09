@@ -35,14 +35,23 @@ describe("UsersService::login", () => {
 
 describe("UsersService::signup", () => {
   
+  const invalidResponse: ServerResponse<UserType> = {
+    data: { username: `user-${randomUUID()}`, password: "azert" } 
+  }
+
   const validResponse: ServerResponse<UserType> = {
-    data: { username: `user-${randomUUID()}`, password: "azerty" } 
+    data: { username: `user-${randomUUID()}`, password: "azertyuiop" } 
   }
   
   test.each([
     {
       username: "",
       password: "",
+      expected: null,
+    },
+    {
+      username: invalidResponse.data.username,
+      password: invalidResponse.data.password,
       expected: null,
     },
     {
@@ -54,7 +63,7 @@ describe("UsersService::signup", () => {
       `Should return '$expected' when username is '$username' and password is '$password'`,
       async ({ expected, username, password }) => {
         const stringifiedExpected = JSON.stringify(expected)
-        const stringifiedRes = JSON.stringify(await usersService.login(username, password))
+        const stringifiedRes = JSON.stringify(await usersService.signup(username, password))
         expect(stringifiedRes).toStrictEqual(stringifiedExpected)
       }
   )
