@@ -6,18 +6,7 @@ beforeAll(() => {
   envUtils.API_BASE_URL = "http://localhost:3005"
 })
 
-describe("SheetsService::getSheets", () => {
-
-  test.each([
-    {
-      expected: null,
-    },
-  ])(
-      `Should return '$expected'`,
-      async ({ expected }) => {
-        const stringifiedExpected = JSON.stringify(expected)
-        const stringifiedRes = JSON.stringify(await sheetsService.getSheets())
-        expect(stringifiedRes).toStrictEqual(stringifiedExpected)
-      }
-  )
+test("SheetsService::getSheets", async () => {
+  const sheets = await sheetsService.getSheets()
+  expect(sheets).toBeInstanceOf(Array)
 })
