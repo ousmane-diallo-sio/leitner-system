@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
 import PageWrapper from './components/PageWrapper'
+import Signup from '../pages/signup'
+import userMobx from '../Users/UsersMobx'
 
 const Router = () => {
   const location = useLocation()
-
-  useEffect(() => {
-    // TODO: check if user is logged in and redirect to login if not
-  }, [location.pathname])
+  const navigate = useNavigate()
   
   return (
     <PageWrapper>
       <Routes>
         <Route path="/" element={<Login />} />
-        {/* <Route path="/signup" element={<Register />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         {/* <Route
           path="/dashboard/*"
           element={
@@ -30,5 +30,11 @@ const Router = () => {
     </PageWrapper>
   )
 }
+
+export const publicRoutes = [
+  '/',
+  '/login',
+  '/signup'
+]
 
 export default Router
