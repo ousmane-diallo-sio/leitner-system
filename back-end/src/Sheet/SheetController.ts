@@ -18,6 +18,14 @@ router.post('/', (req: Request, res: Response) => {
   }
 });
 
+router.get('/', (_: Request, res: Response) => {
+  const sheets = SheetRepository.getAllSheets();
+  res.status(200).json({ data: sheets });
+  if (sheets) {
+    res.status(200).json({ data: sheets });
+  }
+} );
+
 router.post('/questionnaire', (_: Request, res: Response) => {
   const sheets = SheetService.createSheetQuestionnaire();
   res.status(201).json({data: sheets,  message: 'Feuille créée avec succès'});
