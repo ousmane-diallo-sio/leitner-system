@@ -4,5 +4,9 @@ type Sheet = {
   question: string
   answer: string
   tags: string
-  category: string
+  category: number
+  lastAttempted?: Date
+  userUsername: string
 }
+
+export default Sheet

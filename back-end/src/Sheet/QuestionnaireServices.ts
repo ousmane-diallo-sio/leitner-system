@@ -1,16 +1,23 @@
-const SheetRepository = require('./SheetRepository');
+import SheetRepository from "./SheetRepository";
 
-function compareAnswers(sheetId: string, userAnswer: string): boolean {
-  const sheet = SheetRepository.getSheet(sheetId);
+export class QuestionnaireServices {
 
-  if (sheet.answer === userAnswer) {
-    return true; 
-  } else {
-    SheetRepository.updateSheetCategory(sheetId, '1');
-    return false;
+  compareAnswers(sheetId: number, userAnswer: string): boolean{
+    const sheet = SheetRepository.getOneSheet(sheetId);
+    console.log(sheet);
+  
+    if (sheet) {
+      if (sheet?.answer === userAnswer) {
+        return true;
+      } else {
+        sheet.category = 0;
+        SheetRepository.updateSheet(sheetId, sheet);
+        return false;
+      }
+    }
+    throw Error("Sheet undefined")
   }
+
 }
 
-module.exports = {
-  compareAnswers,
-};
+export default new QuestionnaireServices();
