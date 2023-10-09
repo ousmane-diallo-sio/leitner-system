@@ -1,9 +1,9 @@
-import { makeAutoObservable, observable } from "mobx"
+import { action, makeAutoObservable, observable } from "mobx"
 import { publicRoutes } from "../router"
+import { create, persist } from "mobx-persist"
 
 let instance: User
 export class User {
-  private _user: UserType | null = null
 
   constructor() {
     if (instance) {
@@ -14,18 +14,18 @@ export class User {
     makeAutoObservable(this)
   }
 
-  get user(): UserType | null {
-    return this._user
-  }
+  @persist("object")
+  @observable user: UserType | null = null
 
-  set user(user: UserType | null) {
-    this._user = user
-    if (!this._user && !publicRoutes.includes(window.location.pathname)) {
-      window.location.href = "/"
-    }
+  @action.bound
+  setUser(user: UserType | null) {
+    this.user = user
   }
 
 }
 
+const hydrate = create({ storage: localStorage })
 const userMobx = new User()
+hydrate("user", userMobx)
+
 export default userMobx

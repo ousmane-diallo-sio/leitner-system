@@ -1,23 +1,22 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { observer } from "mobx-react"
 import { FC, useEffect } from "react"
+import NavBar from "../NavBar"
 
 type PageWrapperProps = {
   children?: JSX.Element | JSX.Element[]
-  key?: string
+  childKey?: string
+  title?: string
+  navBar?: boolean
 }
 
-const PageWrapper: FC<PageWrapperProps> = ({ children, key }) => {
-
-  useEffect(() => {
-    console.log('PageWrapper')
-  }, [])
+const PageWrapper: FC<PageWrapperProps> = ({ children, childKey, title, navBar }) => {
 
   return (
     <AnimatePresence mode="wait">
       <motion.main
-        key={key}
-        style={{ height: '100vh', width: '100vw' }}
+        key={childKey}
+        className="relative flex flex-col w-[100vw] min-h-[100vh] items-center"
         custom={{ direction: 'forward', delay: 0 }}
         initial="hidden"
         animate="enter"
@@ -28,6 +27,8 @@ const PageWrapper: FC<PageWrapperProps> = ({ children, key }) => {
           enter: { opacity: 1, y: 0 },
           exit: { opacity: 0, y: -100 },
         }}>
+        {navBar && <NavBar />}
+        {title && <h1 className="mb-2">{title}</h1>}
         <>
           {children}
         </>

@@ -1,4 +1,4 @@
-type Sheet = {
+type SheetType = {
   question: string
   answer: string
   tags: string

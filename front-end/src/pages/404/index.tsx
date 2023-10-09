@@ -4,7 +4,7 @@ import PageWrapper from "../../router/components/PageWrapper";
 const PageNotFound = () => {
   
   return (
-    <PageWrapper key="404">
+    <PageWrapper childKey="404">
       <main>
         <h1>404</h1>
       </main>

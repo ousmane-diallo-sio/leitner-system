@@ -23,39 +23,35 @@ const Login = () => {
   }
 
   return (
-    <PageWrapper key="Login">
+    <PageWrapper childKey="Login" title="Connexion">
       <main className={styles['login']}>
-        <section className="flex flex-col items-center">
-          <h1 className="my-20">Connexion</h1>
-
-          <div className={styles['form']}>
-            <div className="flex flex-col w-72 mb-2">
-              <label htmlFor="username">Nom d'utilisateur</label>
-              <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div className="flex flex-col w-72">
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button
-              className={styles['login-btn']}
-              onClick={login}
-            >
-              Me connecter
-            </button>
-            <a onClick={() => navigate('/signup')}>
-              Je n'ai pas encore de compte
-            </a>
+        <div className={styles['form']}>
+          <div className="flex flex-col w-72 mb-2">
+            <label htmlFor="username">Nom d'utilisateur</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)} />
           </div>
-        </section>
+          <div className="flex flex-col w-72">
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <button
+            className={styles['login-btn']}
+            onClick={login}
+          >
+            Me connecter
+          </button>
+          <a onClick={() => navigate('/signup')}>
+            Je n'ai pas encore de compte
+          </a>
+        </div>
       </main>
     </PageWrapper>
   )
