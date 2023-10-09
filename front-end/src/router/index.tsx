@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Login from '../pages/login'
 import PageNotFound from '../pages/404'
-import PageWrapper from './components/PageWrapper'
 import Signup from '../pages/signup'
 import userMobx from '../Users/UsersMobx'
 import PrivateRoute from './components/PrivateRoute'
@@ -19,23 +18,21 @@ const Router = () => {
   }, [location.pathname])
 
   return (
-    <PageWrapper>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
 
-        <Route
-          path="/dashboard/"
-          element={
+      <Route
+        path="/dashboard/"
+        element={
             <PrivateRoute 
               element={<Dashboard />} 
               isAllowed={!!userMobx.user} />
-          } />
+        } />
 
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </PageWrapper>
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   )
 }
 

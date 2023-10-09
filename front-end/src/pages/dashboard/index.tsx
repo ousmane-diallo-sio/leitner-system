@@ -2,14 +2,17 @@
 import React from "react";
 
 import NavBar from "../../router/components/NavBar";
+import PageWrapper from "../../router/components/PageWrapper";
 
 const Dashboard = () => {
 
   return (
-    <main>
-      <NavBar />
-      <h1>Dashboard</h1>
-    </main>
+    <PageWrapper key="Dashboard">
+      <main>
+        <NavBar />
+        <h1>Dashboard</h1>
+      </main>
+    </PageWrapper>
   )
 }
 
