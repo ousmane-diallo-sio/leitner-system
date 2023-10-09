@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import userController from './Users/UserController';
 import cors from "cors";
 import { NextFunction, Request, Response } from "express";
+import SheetController from './Sheet/SheetController';
 
 const app = express()
 app.use("*", cors())
@@ -18,6 +19,7 @@ app.use(requestLogger)
 
 app.use(bodyParser.json())
 app.use('/user', userController)
+app.use('/sheet', SheetController)
 
 app.get('/', (req, res) => {
 	res.contentType("application/json")
