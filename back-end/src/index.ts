@@ -1,12 +1,13 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import userController from './Users/UserController';
+import SheetController from './Sheet/SheetController';
 
 const app = express()
 
 app.use(bodyParser.json())
 app.use('/user', userController)
-app.use('/sheet', userController)
+app.use('/sheet', SheetController)
 
 app.get('/', (req, res) => {
 	res.contentType("application/json")
