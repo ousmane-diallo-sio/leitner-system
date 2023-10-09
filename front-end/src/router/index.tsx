@@ -5,26 +5,34 @@ import PageNotFound from '../pages/404'
 import PageWrapper from './components/PageWrapper'
 import Signup from '../pages/signup'
 import userMobx from '../Users/UsersMobx'
+import PrivateRoute from './components/PrivateRoute'
+import Dashboard from '../pages/dashboard'
+import usersService from '../Users/UsersService'
 
 const Router = () => {
   const location = useLocation()
-  const navigate = useNavigate()
-  
+
+  useEffect(() => {
+    if (userMobx.user && publicRoutes.includes(location.pathname)) {
+      usersService.logout()
+    }
+  }, [location.pathname])
+
   return (
     <PageWrapper>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* <Route
-          path="/dashboard/*"
+
+        <Route
+          path="/dashboard/"
           element={
-            <>
-              <AdminRoute routes={() => <RightPanel />} />
-              <AdminRoute routes={(client) => <PageAuth client={client} />} />
-            </>
-          }
-        /> */}
+            <PrivateRoute 
+              element={<Dashboard />} 
+              isAllowed={!!userMobx.user} />
+          } />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </PageWrapper>
