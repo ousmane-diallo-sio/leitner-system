@@ -7,6 +7,7 @@ import userMobx from '../Users/UsersMobx'
 import PrivateRoute from './components/PrivateRoute'
 import Dashboard from '../pages/dashboard'
 import usersService from '../Users/UsersService'
+import Sheets from '../pages/sheets'
 
 const Router = () => {
   const location = useLocation()
@@ -24,10 +25,18 @@ const Router = () => {
       <Route path="/signup" element={<Signup />} />
 
       <Route
-        path="/dashboard/"
+        path="/dashboard"
         element={
             <PrivateRoute 
               element={<Dashboard />} 
+              isAllowed={!!userMobx.user} />
+        } />
+
+      <Route
+        path="/sheets"
+        element={
+            <PrivateRoute 
+              element={<Sheets />} 
               isAllowed={!!userMobx.user} />
         } />
 

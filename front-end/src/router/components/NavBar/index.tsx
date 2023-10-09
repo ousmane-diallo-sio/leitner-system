@@ -7,7 +7,7 @@ const NavBar = () => {
 
   const navigate = useNavigate()
 
-  const items = [
+  const navItems = [
     {
       label: 'Dashboard',
       path: '/dashboard'
@@ -18,22 +18,23 @@ const NavBar = () => {
     },
     {
       label: 'Déconnexion',
-      path: '/login'
+      path: '/login',
+      className: 'bg-red-500 text-white rounded',
     } 
   ]
 
   return (
-    <section className='w-full flex py-6 justify-evenly bg-slate-100 mb-3 sticky top-0'>
-      {items.map((item, index) => (
+    <section className='w-full flex py-6 justify-evenly items-center bg-slate-100 mb-3 sticky top-0'>
+      <h2>Bonjour {userMobx.user?.username}</h2>
+      {navItems.map((item, index) => (
         <a
           key={index}
-          className='text-slate-700'
+          className={`text-slate-700 px-4 py-2 ${item.className ?? ''}`}
           onClick={() => navigate(item.path)}
         >
           {item.label}
         </a>
       ))}
-      <b>{userMobx.user?.username}</b>
     </section>
   )
 }

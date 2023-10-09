@@ -1,0 +1,16 @@
+.sheet-card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 250px;
+  align-items: center;
+  padding: 30px 40px;
+  margin: 30px;
+  border: solid 1px gray;
+  cursor: pointer;
+  transition: .3s;
+  @apply rounded-md shadow-xl shadow-slate-200 bg-slate-200;
+  &:hover {
+    @apply shadow-slate-300;
+  }
+}
