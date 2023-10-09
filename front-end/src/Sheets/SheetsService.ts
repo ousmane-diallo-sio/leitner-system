@@ -15,7 +15,7 @@ class SheetsService {
 
   async getSheets() {
     try {
-      const res = await this.axiosClient.post("/sheets")
+      const res = await this.axiosClient.get("/sheets")
       const resData = res.data as ServerResponse<SheetType[] |null>
 
       if (res.status === 200 && resData.data) {

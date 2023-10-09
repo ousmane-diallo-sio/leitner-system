@@ -1,21 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect } from "react";
 import PageWrapper from "../../router/components/PageWrapper";
-import SheetCard from "../../Sheets/SheetCard";
+import sheetsService from "../../Sheets/SheetsService";
 
 const Sheets = () => {
 
-  const sheet: SheetType = {
-    answer: 'fyhg',
-    category: 'fgh',
-    question: 'Quel est le nom de la capitale de la France ?',
-    tags: ''
-  }
+  useEffect(() => {
+    sheetsService.getSheets()
+  }, [])
 
   return (
     <PageWrapper childKey="Dashboard" title="Mes questions" navBar>
       <main className="w-full flex flex-1 flex-col px-6">
-        
+
       </main>
     </PageWrapper>
   )
