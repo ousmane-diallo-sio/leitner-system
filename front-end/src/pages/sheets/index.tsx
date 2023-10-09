@@ -15,7 +15,7 @@ const Sheets = () => {
   return (
     <PageWrapper childKey="Dashboard" title="Mes questions" navBar>
       <main className="w-full flex flex-1 flex-col px-6">
-        <SheetCard sheet={sheet} />
+        
       </main>
     </PageWrapper>
   )
