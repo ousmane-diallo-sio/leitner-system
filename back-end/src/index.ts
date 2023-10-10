@@ -19,7 +19,7 @@ app.use(requestLogger)
 
 app.use(bodyParser.json())
 app.use('/user', userController)
-app.use('/sheet', SheetController)
+app.use('/sheets', SheetController)
 
 app.get('/', (req, res) => {
 	res.contentType("application/json")
