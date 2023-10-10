@@ -28,7 +28,7 @@ router.get('/', (_: Request, res: Response) => {
 
 router.post('/questionnaire', (_: Request, res: Response) => {
   const sheets = SheetService.createSheetQuestionnaire();
-  res.status(201).json({data: sheets,  message: 'Feuille créée avec succès'});
+  res.status(201).json({data: sheets,  message: 'Questionnaire créé'});
 });
 
 router.get('/:sheetId', (req: Request, res: Response) => {
@@ -50,8 +50,6 @@ router.put('/:sheetId/updateCategory', (req: Request, res: Response) => {
   try {
     const sheet = SheetRepository.getOneSheet(+sheetId)
     const isCorrect = QuestionnaireServices.compareAnswers(+sheetId, userAnswer);
-    console.log(isCorrect);
-    console.log(sheet);
 
     if (sheet) {
       if (isCorrect) {
