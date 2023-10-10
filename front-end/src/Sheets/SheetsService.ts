@@ -26,7 +26,6 @@ class SheetsService {
       if (resData.error) {
         toast.error(resData.error)
       }
-
       return null
     } catch (error) {
       toast.error("Erreur lors du chargement des questions")
