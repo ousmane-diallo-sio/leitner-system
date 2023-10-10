@@ -84,7 +84,7 @@ function generateRandomString(length: number): string {
 describe('sheet', () => {
   test('should return sheet if valid', async () => {
     const response = await request(app)
-      .post('/sheet')
+      .post('/sheets')
       .send({
           "id": Math.random() * (1000 - 100 + 1) + 100,
           "question": "Quelle est la capitale de la France?",
@@ -97,7 +97,7 @@ describe('sheet', () => {
   });
   test('should return null if invalid', async () => {
     const response = await request(app)
-      .post('/sheet')
+      .post('/sheets')
       .send({
         "id": 1,
         "question": "Quelle est la capitale de la France?",
@@ -110,21 +110,21 @@ describe('sheet', () => {
   });
   test('should return sheet if id exists', async () => {
     const response = await request(app)
-      .get('/sheet/1')
+      .get('/sheets/1')
       .send();
     expect(response.status).toBe(200);
     expect(response.body.data).not.toBeNull();
   });
   test('should return null if there is no sheet with id', async () => {
     const response = await request(app)
-      .get('/sheet/9999999999')
+      .get('/sheets/9999999999')
       .send();
     expect(response.status).toBe(404);
     expect(response.body.data).toBeNull();
   });
   test('should return sheet if id exists', async () => {
     const response = await request(app)
-      .put('/sheet/1/updateCategory')
+      .put('/sheets/1/updateCategory')
       .send({
         "id": 1,
         "question": "Quelle est la capitale de la France?",
@@ -137,7 +137,7 @@ describe('sheet', () => {
   });
   test('should return null if there is no sheet with id', async () => {
     const response = await request(app)
-      .put('/sheet/99999999/updateCategory')
+      .put('/sheets/99999999/updateCategory')
       .send({
         "id": 99999999,
         "question": "Quelle est la capitale de la France?",
