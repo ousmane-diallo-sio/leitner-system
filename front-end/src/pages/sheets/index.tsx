@@ -13,10 +13,21 @@ const Sheets = () => {
 
   return (
     <PageWrapper childKey="Dashboard" title="Mes questions" navBar>
-      <main className="w-full flex flex-1 flex-col px-6">
-        {sheetMobx.sheets.map((sheet, index) => (
-          <SheetCard key={index} sheet={sheet} />
-        ))}
+      <main className="w-full flex flex-1 flex-col">
+        <section className="w-full flex flex-wrap px-6">
+          {sheetMobx.sheets.map((sheet, index) => (
+            <SheetCard key={index} sheet={sheet} />
+          ))}
+
+        </section>
+        {/* <div className="sticky bottom-3 w-full flex justify-center mt-5">
+          <button
+            className="bg-blue-500 text-white px-8 py-4 rounded-full"
+              
+          >
+            Créer une nouvelle fiche
+          </button>
+        </div> */}
       </main>
     </PageWrapper>
   )

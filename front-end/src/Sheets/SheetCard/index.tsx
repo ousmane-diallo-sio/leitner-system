@@ -17,7 +17,7 @@ const SheetCard: FC<SheetProps> = ({ sheet, isFromQuestionnaire }) => {
 
   return (
     <div className={styles['sheet-card']}>
-      <div className="flex flex-1 flex-col">
+      <div className="flex flex-col">
         <b className="text-center text-lg text-slate-800">{sheet.tags}</b>
         <p>Catégorie : {sheet.category}</p>
         <b className="text-center text-lg text-slate-800">{sheet.question}</b>
@@ -32,13 +32,14 @@ const SheetCard: FC<SheetProps> = ({ sheet, isFromQuestionnaire }) => {
       {isFromQuestionnaire ? (
         <>
           <input
+            className="w-full"
             type="text"
             value={userAnswer}
             placeholder="Votre réponse"
             onChange={(e) => setUserAnswer(e.target.value)} />
           {userAnswer &&
             <button
-              className="bg-yellow-200"
+              className="bg-slate-700 text-white w-full mt-2"
               onClick={() => setShowAnswerOverlay(true)}
             >
               Valider
@@ -47,7 +48,7 @@ const SheetCard: FC<SheetProps> = ({ sheet, isFromQuestionnaire }) => {
         </>
       ) : (
         <button
-          className={`w-full text-white ${styles[isAnswerVisible ? 'btn-hide' : 'btn-show']}`}
+          className={`w-full text-white m-auto ${styles[isAnswerVisible ? 'btn-hide' : 'btn-show']}`}
           onClick={() => setShowAnswer(!isAnswerVisible)}
         >
           {isAnswerVisible ? 'Cacher la réponse' : 'Afficher la réponse'}
