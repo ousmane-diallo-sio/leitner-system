@@ -13,4 +13,12 @@
   &:hover {
     @apply shadow-slate-300;
   }
+
+  & .btn-show {
+    @apply bg-blue-500;
+  }
+
+  & .btn-hide {
+    @apply bg-red-500;
+  }
 }

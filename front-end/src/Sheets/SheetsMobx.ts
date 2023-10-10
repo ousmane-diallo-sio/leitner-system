@@ -26,6 +26,6 @@ export class Sheet {
 
 const hydrate = create({ storage: localStorage })
 const sheetMobx = new Sheet()
-hydrate("user", sheetMobx)
+hydrate("sheet", sheetMobx)
 
 export default sheetMobx
