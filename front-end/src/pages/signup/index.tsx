@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import usersService from "../../Users/UsersService";
 import userMobx from "../../Users/UsersMobx";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import PageWrapper from "../../router/components/PageWrapper";
 
 const Signup = () => {
 
@@ -20,10 +22,8 @@ const Signup = () => {
   }
 
   return (
-    <main>
-      <section className="flex flex-col items-center">
-        <h1 className="my-20">Créer un compte</h1>
-
+    <PageWrapper childKey="Signup" title="Créer un compte">
+      <main className="w-full flex flex-1 flex-col items-center justify-center">
         <div>
           <div className="flex flex-col w-72 mb-2">
             <label htmlFor="username">Nom d'utilisateur</label>
@@ -54,8 +54,8 @@ const Signup = () => {
         <a onClick={() => navigate('/login')}>
           J'ai déjà un compte
         </a>
-      </section>
-    </main>
+      </main>
+    </PageWrapper>
   )
 }
 

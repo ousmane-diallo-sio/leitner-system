@@ -1,11 +1,14 @@
 import React from "react";
+import PageWrapper from "../../router/components/PageWrapper";
 
 const PageNotFound = () => {
   
   return (
-    <main>
-      <h1>404</h1>
-    </main>
+    <PageWrapper childKey="404">
+      <main>
+        <h1>404</h1>
+      </main>
+    </PageWrapper>
   )
 }
 
