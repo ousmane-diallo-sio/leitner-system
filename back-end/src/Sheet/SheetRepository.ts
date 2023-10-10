@@ -40,7 +40,6 @@ export class SheetRepository {
     fs.writeFileSync(dataFilePath, updatedData);
   }
 
-  
 }
 
 export default new SheetRepository();
