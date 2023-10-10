@@ -8,14 +8,15 @@ export class QuestionnaireServices {
   
     if (sheet) {
       if (sheet?.answer === userAnswer) {
+        sheet.category++;
         return true;
       } else {
-        sheet.category = 0;
+        sheet.category = 1;
         SheetRepository.updateSheet(sheetId, sheet);
         return false;
       }
     }
-    throw Error("Sheet undefined")
+    throw Error("Feuille non trouvée")
   }
 
 }
