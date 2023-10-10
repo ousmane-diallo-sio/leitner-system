@@ -1,0 +1,69 @@
+@use "./colors.scss" as colors;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  @apply text-4xl font-bold;
+  color: colors.$azure;
+  padding: 10px 0;
+}
+
+h2 {
+  @apply text-2xl font-bold;
+  padding: 10px 0;
+}
+
+a {
+  text-decoration: underline;
+  color: #0074d9;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:visited {
+    color: #8c54b3;
+  }
+
+}
+
+input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  margin: 5px 0;
+
+  &:focus {
+    outline: none;
+    border-color: colors.$azure;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  background: #eee;
+  cursor: pointer;
+  transition: .15s;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}

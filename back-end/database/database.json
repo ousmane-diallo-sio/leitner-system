@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "username": "ValidUsername",
+      "password": "ValidPassword"
+    },
+    {
+      "username": "John",
+      "password": "azerty"
+    },
+    {
+      "username": "Jane",
+      "password": "qwerty"
+    },
+    {
+      "username": "poro",
+      "password": "zaefzrgt"
+    },
+    {
+      "username": "dialloo",
+      "password": "ezgzr"
+    },
+    {
+      "username": "dialloof",
+      "password": "ezgzr"
+    },
+    {
+      "username": "diallooffezefze",
+      "password": "ezgzrefzeef"
+    },
+    {
+      "username": "user-3910b186-7302-40d4-8bb1-c105bb559e18",
+      "password": "azerty"
+    },
+    {
+      "username": "user-830fe5cf-a0be-4514-853f-572e090bcad3",
+      "password": "azertyuiop"
+    },
+    {
+      "username": "user-52b06317-8938-4248-9cf9-fd9ec6942531",
+      "password": "azert"
+    },
+    {
+      "username": "user-7f5b68aa-5b04-4a80-a417-dc5a1f4e805c",
+      "password": "azertyuiop"
+    }
+  ]
+}
