@@ -33,6 +33,10 @@ class SheetsService {
       return null
     }
   }
+
+  async getQuestionnaire(): Promise<SheetType[]> {
+    return []
+  }
 }
 
 const sheetsService = new SheetsService()

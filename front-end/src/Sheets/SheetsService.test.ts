@@ -10,3 +10,8 @@ test("SheetsService::getSheets", async () => {
   const sheets = await sheetsService.getSheets()
   expect(sheets).toBeInstanceOf(Array)
 })
+
+test("SheetsService::getQuestionnaire", async () => {
+  const sheets = await sheetsService.getQuestionnaire()
+  expect(sheets).toBeInstanceOf(Array)
+})
