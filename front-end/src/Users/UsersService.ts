@@ -24,7 +24,7 @@ class UsersService {
       const resData = res.data as ServerResponse<UserType | null>
 
       if (res.status === 200) {
-        userMobx.user = resData.data
+        userMobx.setUser(resData.data)
         return resData.data
       }
 
@@ -41,7 +41,8 @@ class UsersService {
   }
 
   logout() {
-    userMobx.user = null
+    toast("Déconnexion")
+    userMobx.setUser(null)
   }
 
   async signup(username: string, password: string): Promise<UserType | null> {
@@ -55,7 +56,7 @@ class UsersService {
       const resData = res.data as ServerResponse<UserType | null>
 
       if (res.status === 201) {
-        userMobx.user = resData.data
+        userMobx.setUser(resData.data)
         return resData.data
       }
 

@@ -5,6 +5,7 @@ import usersService from "../../Users/UsersService";
 import userMobx from "../../Users/UsersMobx";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import PageWrapper from "../../router/components/PageWrapper";
 
 const Login = () => {
 
@@ -22,10 +23,8 @@ const Login = () => {
   }
 
   return (
-    <main className={styles['login']}>
-      <section className="flex flex-col items-center">
-        <h1 className="my-20">Connexion</h1>
-
+    <PageWrapper childKey="Login" title="Connexion">
+      <main className={styles['login']}>
         <div className={styles['form']}>
           <div className="flex flex-col w-72 mb-2">
             <label htmlFor="username">Nom d'utilisateur</label>
@@ -53,8 +52,8 @@ const Login = () => {
             Je n'ai pas encore de compte
           </a>
         </div>
-      </section>
-    </main>
+      </main>
+    </PageWrapper>
   )
 }
 
