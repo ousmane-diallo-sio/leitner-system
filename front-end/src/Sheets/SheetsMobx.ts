@@ -17,9 +17,17 @@ export class Sheet {
   @persist("object")
   @observable sheets: SheetType[] = []
 
+  @persist("object")
+  @observable questionnaire: SheetType[] = []
+
   @action.bound
   setSheets(sheets: SheetType[]) {
     this.sheets = sheets
+  }
+
+  @action.bound
+  setQuestionnaire(questionnaire: SheetType[]) {
+    this.questionnaire = questionnaire
   }
 
 }
